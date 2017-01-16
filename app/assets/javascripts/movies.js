@@ -20,13 +20,13 @@ SPM.Movies = (function($){
     e.preventDefault();
     var data = $(e.target).serialize()
     $.ajax({
-      url: "/movies",
+      url: "/movies.json",
       method: "POST",
       data: data,
       headers: {
-        "Content-type": "application/application/x-www-form-urlencoded"
-      }
-      dataType: "json"
+        "Content-type": "application/x-www-form-urlencoded"
+      },
+      dataType: "json",
     }).done(function(resp){
       insertIntoTable(resp.title, resp.release_date)
     })

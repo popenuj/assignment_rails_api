@@ -4,6 +4,6 @@ class Movie < ApplicationRecord
 
   private
    def set_release_date
-     release_date = Date.today
+     self.release_date = Date.today
    end
 end

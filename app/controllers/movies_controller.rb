@@ -10,9 +10,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find_by(id: params[:id])
-    respond_to do |format|
-      format.json
-    end
+    render json: @movie
   end
 
   def create
@@ -20,9 +18,7 @@ class MoviesController < ApplicationController
     unless @movie.save
       render json: { errors: @movie.errors.full_messages }, status: :unprocessable_entity
     end
-    respond_to do |format|
-      format.json { redirect_to @movie}
-    end
+    redirect_to @movie, format: :json
   end
 
   private
