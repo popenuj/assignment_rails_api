@@ -14,6 +14,6 @@ movie_ids = Movie.pluck(:id)
 
 movie_ids.each do |id|
   rand(5).times do
-    Review.create(reviewer_name: Faker::Hipster.sentence(3), title: Faker::Hipster.words(10), review_text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", review_date: Faker::Date.between(365.days.ago, 365.days.from_now), movie_id: id)
+    Review.create(reviewer_name: Faker::Hipster.sentence(3), title: Faker::Hipster.words(10).join(" "), review_text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", review_date: Faker::Date.between(365.days.ago, 365.days.from_now), movie_id: id)
   end
 end

@@ -1,21 +1,24 @@
 <h1 id="page-title" data-controller="review">Smelly Potatoes Reviews</h1>
 
 <h3>Create A Review</h3>
+<div class="col-md-6">
 <%= form_for @review, remote: true do |f| %>
   <%= f.label :reviewer_name %>
-  <%= f.text_field :reviewer_name %>
+  <%= f.text_field :reviewer_name, class: 'form-control' %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, class: 'form-control' %>
   <%= f.label :review_text %>
-  <%= f.text_field :review_text %>
-  <%= f.collection_select :movie_id, Movie.all, :id, :title %>
-  <%= f.submit %>
+  <%= f.text_area :review_text, class: 'form-control' %>
+  <%= f.label :movie_id, "Movie:" %>
+  <%= f.collection_select :movie_id, Movie.all, :id, :title, {}, {class: 'form-control'} %>
+  <%= f.submit class: 'btn btn-success' %>
 <% end %>
+</div>
 
 <table id="review-table" class="table table-striped">
   <thead>
     <tr>
-        <th>Movie Reviewed</th>
+      <th>Movie Reviewed</th>
       <th>Reviewer</th>
       <th>Title</th>
       <th>Review Text</th>
@@ -24,5 +27,6 @@
     </tr>
   </thead>
   <tbody id="review-body">
+    <%= render @reviews %>
   </tbody>
 </table>

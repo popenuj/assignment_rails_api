@@ -21,6 +21,13 @@ class ReviewsController < ApplicationController
     respond_to :js
   end
 
+  def destroy
+    @review = Review.find_by(id: params[:id])
+    @id = @review.id
+    @review.destroy
+    respond_to :js
+  end
+
   private
     def review_params
       params.require(:review).permit(:title, :review_text, :reviewer_name, :movie_id)
