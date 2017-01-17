@@ -7,4 +7,4 @@ assignment_rails_api
 
 [Sampson Crowley](https://github.com/SampsonCrowley)
 
-[John Popenuk](https://github.com/popenuj)
+[John Popenuck](https://github.com/popenuj)
