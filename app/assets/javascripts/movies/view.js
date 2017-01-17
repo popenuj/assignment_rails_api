@@ -37,10 +37,24 @@ SPM.Movies.view = (function($){
     }
   }
 
+  var scrollListener = function scrollListener(callback) {
+    $(window).scroll(function(){
+      checkScrollHeight(callback);
+    });
+  }
+
+  var checkScrollHeight = function checkScrollHeight(callback) {
+    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 200){
+      callback();
+    }
+  }
+
   var init = function init(callback) {
     $table = $('#movie-table');
     $movieForm = $('#new_movie')
-    newMovieListener(callback);
+    newMovieListener(callback.newMovie);
+    scrollListener(callback.scroll);
+    checkScrollHeight(callback.scroll);
   }
 
   return {

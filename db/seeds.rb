@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-20.times do |n|
+101.times do |n|
   Movie.create(title: Faker::Hipster.words(3).join(" "), release_date: Faker::Date.between(365.days.ago, 365.days.from_now))
 end
 

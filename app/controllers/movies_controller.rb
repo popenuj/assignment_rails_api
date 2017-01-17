@@ -1,7 +1,8 @@
 class MoviesController < ApplicationController
+
   def index
     @movie = Movie.new
-    @movies = Movie.all
+    @movies = Movie.all.limit(15).where("id > ?", (params[:start_id] || 0))
     respond_to do |format|
       format.json
       format.html

@@ -1,16 +1,12 @@
 class ReviewsController < ApplicationController
+
   def index
     @review = Review.new
-    @reviews = Review.all
+    @reviews = Review.all.order(review_date: :desc, created_at: :desc)
     respond_to do |format|
       format.json
       format.html
     end
-  end
-
-  def show
-    @review = Review.find_by(id: params[:id])
-    render json: @review
   end
 
   def create
@@ -32,4 +28,5 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:title, :review_text, :reviewer_name, :movie_id)
     end
+    
 end

@@ -1,32 +1,39 @@
 <h1 id="page-title" data-controller="review">Smelly Potatoes Reviews</h1>
 
 <h3>Create A Review</h3>
-<div class="col-md-6">
-<%= form_for @review, remote: true do |f| %>
-  <%= f.label :reviewer_name %>
-  <%= f.text_field :reviewer_name, class: 'form-control' %>
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
-  <%= f.label :review_text %>
-  <%= f.text_area :review_text, class: 'form-control' %>
-  <%= f.label :movie_id, "Movie:" %>
-  <%= f.collection_select :movie_id, Movie.all, :id, :title, {}, {class: 'form-control'} %>
-  <%= f.submit class: 'btn btn-success' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_for @review, remote: true do |f| %>
+        <%= f.label :reviewer_name %>
+        <%= f.text_field :reviewer_name, class: 'form-control', data: {clearable: '1'} %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control', data: {clearable: '1'} %>
+        <%= f.label :review_text %>
+        <%= f.text_area :review_text, class: 'form-control', data: {clearable: '1'} %>
+        <%= f.label :movie_id, "Movie:" %>
+        <%= f.collection_select :movie_id, Movie.all, :id, :title, {}, {class: 'form-control', data: {clearable: '1'}} %>
+        <%= f.submit class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table id="review-table" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Movie Reviewed</th>
+            <th>Reviewer</th>
+            <th>Title</th>
+            <th>Review Text</th>
+            <th>Review Date</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="review-body">
+          <%= render @reviews %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<table id="review-table" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Movie Reviewed</th>
-      <th>Reviewer</th>
-      <th>Title</th>
-      <th>Review Text</th>
-      <th>Review Date</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody id="review-body">
-    <%= render @reviews %>
-  </tbody>
-</table>

@@ -1,1 +1,5 @@
-$("#review-body").append("<%= j(render @review) %>")
+$("<%= j(render @review) %>")
+  .prependTo($("#review-body"))
+  .hide()
+  .fadeIn(500);
+$("#new_review [data-clearable='1']").val(null);
